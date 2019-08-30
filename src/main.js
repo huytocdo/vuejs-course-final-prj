@@ -2,8 +2,12 @@ import Vue from 'vue'
 import VueRouter from 'vue-router';
 import { routes } from './routes';
 import App from './App.vue'
-
+import store from './store/store';
 Vue.use(VueRouter);
+
+Vue.filter('currency', (value) => {
+  return '$' + value.toLocaleString();
+});
 
 const router = new VueRouter({
   mode: 'history',
@@ -12,5 +16,6 @@ const router = new VueRouter({
 new Vue({
   el: '#app',
   router,
+  store,
   render: h => h(App)
 })
